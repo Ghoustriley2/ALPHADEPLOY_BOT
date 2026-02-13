@@ -1,7 +1,11 @@
 import telebot
 import os
 
-TOKEN = "YOUR_BOT_TOKEN"  # вставь сюда токен своего бота
+# Получаем токен из переменных окружения Railway
+TOKEN = os.environ.get("TOKEN")
+if not TOKEN:
+    raise ValueError("Переменная окружения TOKEN не установлена!")
+
 bot = telebot.TeleBot(TOKEN)
 
 ALLOWED_EXTENSIONS = ["py", "java", "c", "cpp", "txt"]
@@ -60,6 +64,6 @@ def handle_message(message):
         del user_data[chat_id]  # очищаем данные для нового файла
     else:
         bot.send_message(chat_id, "Текст добавлен в файл. Отправь ещё или напиши 'Готово' для завершения.")
-        
 
-bot.polling()
+# Запуск бота
+bot.polling(none_stop=True)
