@@ -66,4 +66,9 @@ def handle_message(message):
         bot.send_message(chat_id, "Текст добавлен в файл. Отправь ещё или напиши 'Готово' для завершения.")
 
 # Запуск бота
+try:
+    bot.get_updates(offset=None)
+except:
+    pass
+
 bot.polling(none_stop=True)
