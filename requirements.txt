@@ -1,1 +1,2 @@
-pytelegrambotapi
+pyTelegramBotAPI==6.14.0
+Flask==2.3.5
